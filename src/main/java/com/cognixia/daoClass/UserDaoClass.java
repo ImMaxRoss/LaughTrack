@@ -6,21 +6,34 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import com.cognixia.dao.UserDao;
+import com.cognixia.exception.UserAlreadyExistsException;
 import com.cognixia.models.User;
 import com.cognixia.utils.DatabaseConnection;
 
 public class UserDaoClass implements UserDao {
 
     @Override
-    public boolean registerUser(User user) {
-        String query = "INSERT INTO Users (username, password) VALUES (?, ?)";
-        try (Connection conn = DatabaseConnection.getConnection();
-             PreparedStatement stmt = conn.prepareStatement(query)) {
+    public boolean registerUser(User user) throws UserAlreadyExistsException  {
+        String checkQuery = "SELECT username FROM Users WHERE username = ?";
+        String insertQuery = "INSERT INTO Users (username, password) VALUES (?, ?)";
+        
+        try (Connection conn = DatabaseConnection.getConnection(); 
+             PreparedStatement checkStmt = conn.prepareStatement(checkQuery);
+             PreparedStatement insertStmt = conn.prepareStatement(insertQuery)) {
 
-            stmt.setString(1, user.getUsername());
-            stmt.setString(2, user.getPassword());
-            int rowsInserted = stmt.executeUpdate();
+            // Check if the user already exists
+            checkStmt.setString(1, user.getUsername());
+            ResultSet rs = checkStmt.executeQuery();
+            if (rs.next()) {
+                throw new UserAlreadyExistsException("User already exists!");
+            }
+
+            // Register new user
+            insertStmt.setString(1, user.getUsername());
+            insertStmt.setString(2, user.getPassword());
+            int rowsInserted = insertStmt.executeUpdate();
             return rowsInserted > 0;
+            
         } catch (SQLException e) {
             e.printStackTrace();
             return false;
@@ -30,7 +43,8 @@ public class UserDaoClass implements UserDao {
     @Override
     public User loginUser(String username, String password) {
         String query = "SELECT user_id, username, password FROM Users WHERE username = ? AND password = ?";
-        try (Connection conn = DatabaseConnection.getConnection();
+        
+        try (Connection conn = DatabaseConnection.getConnection(); 
              PreparedStatement stmt = conn.prepareStatement(query)) {
 
             stmt.setString(1, username);
@@ -41,6 +55,7 @@ public class UserDaoClass implements UserDao {
             } else {
                 return null;
             }
+            
         } catch (SQLException e) {
             e.printStackTrace();
             return null;

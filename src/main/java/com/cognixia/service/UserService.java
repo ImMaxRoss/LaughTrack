@@ -3,7 +3,7 @@ package com.cognixia.service;
 import com.cognixia.dao.*;
 import com.cognixia.daoClass.*;
 import com.cognixia.models.*;
-
+import com.cognixia.exception.UserAlreadyExistsException;
 
 import java.util.Scanner;
 
@@ -23,12 +23,16 @@ public class UserService {
         String password = scanner.next();
 
         User user = new User(0, username, password);
-        boolean isRegistered = userDao.registerUser(user);
 
-        if (isRegistered) {
-            System.out.println("User registered successfully!");
-        } else {
-            System.out.println("Failed to register user.");
+        try {
+            boolean isRegistered = userDao.registerUser(user);
+            if (isRegistered) {
+                System.out.println("User registered successfully!");
+            } else {
+                System.out.println("Failed to register user.");
+            }
+        } catch (UserAlreadyExistsException e) {
+            System.out.println(e.getMessage());
         }
     }
 
