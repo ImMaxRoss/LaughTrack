@@ -121,7 +121,7 @@ public class Main {
         while (true) {
             System.out.println("1. View All Groups");
             System.out.println("2. View Tracked Groups");
-            System.out.println("3. Exit");
+            System.out.println("3. Logout");
             System.out.print("Enter choice: ");
             int choice = scanner.nextInt();
 
@@ -162,7 +162,6 @@ public class Main {
                         throw new GroupNotReadyForRatingException("Haven't watched yet");
                     }
     
-                    // Fetch the average rating for the current group
                     String ratingQuery = "SELECT ROUND(AVG(rating),1) AS avg_rating "
                             + "FROM UserRatings AS UR "
                             + "JOIN Sketches AS S ON UR.sketch_id = S.sketch_id "
@@ -184,7 +183,7 @@ public class Main {
                 }
             }
     
-            System.out.print("Enter the group number to view details or '0' to go back: ");
+            System.out.print("Enter a group number to view details & sketches or '0' to go back: ");
             int groupId = scanner.nextInt();
             if (groupId > 0) {
                 showComedyGroupDetails(groupId, conn, scanner);
@@ -206,7 +205,7 @@ public class Main {
                 System.out.println(rs.getInt("group_id") + ". " + rs.getString("name"));
             }
 
-            System.out.print("Enter the group number to view details: ");
+            System.out.print("Enter a group number to view details & sketches: ");
             int groupId = scanner.nextInt();
             showComedyGroupDetails(groupId, conn, scanner);
         } catch (SQLException e) {
