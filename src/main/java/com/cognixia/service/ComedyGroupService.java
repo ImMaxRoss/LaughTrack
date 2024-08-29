@@ -1,5 +1,6 @@
 package com.cognixia.service;
 
+import com.cognixia.models.*;
 import com.cognixia.dao.*;
 import com.cognixia.daoClass.*;
 import java.util.List;
@@ -33,7 +34,7 @@ public class ComedyGroupService {
     }
 
     public void viewComedyGroupDetails(int groupId, Scanner scanner, int loggedInUserId) {
-        ComedyGroupDaoClass comedyGroup = comedyGroupDao.getComedyGroupById(groupId);
+        ComedyGroup comedyGroup = ComedyGroupDaoClass.getComedyGroupById(groupId);
         if (comedyGroup != null) {
             System.out.println("Group Name: " + comedyGroup.getName());
             System.out.println("Description: " + comedyGroup.getDescription());

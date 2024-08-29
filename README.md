@@ -104,10 +104,10 @@ LaughTrack/
 
 ### Database ER diagram
 
-![Er-Diagram](./README-images/LaughTrack-ER.png)
+![Er-Diagram](./images/ER-diagram.png)
 
 ### App Flowchart
-![flowchart](./README-images/flowchart.png)
+[![](https://mermaid.ink/img/pako:eNq9VcFy2jAQ_RWNeqEzYGwZMPjQDgkhySHTtNAe6nBQbGFrYiSPJJNQzL9XkiGBNAmc6pO1-3b37epJWsOYJwSGcJ7zxzjDQoHp6I4BMIyGRQEmSltmoNX6AozxbL1eYMpucUrM0nyeA3KeUrZbIwcIklKpiNiZfAeQJ6o2G5vCJqtKSQQgTKNkCLwKnEcNm-anfIl769PlbBQwCRhekI_AaAcusJSPXCSfZwZ-XlO4Zkuc0-Q5E-AvwAqcvUcWVWAUNXY9_g--o5qFKfU8W7JP8R-OfgUuoguWzPaaoNt2zSbjWOO2CUYvPdop4FwQnKzMlkkldbN7I4u5ECRW9Y5XYLxeLyl5_FYoypk8MgaDBDFfEJ07Fbws5JFR2ACluT6Q5IQI3whPlYKBnURrwY3fFtxl1DAFzi2hy6PZbQs1e0vF-xiMDsDoY7Bm7jjOkeruYXm3lsb4bYFeRY1pPbhT-2uBbQCoseAEMGWpuSBUeSTzcJmCH1hp-PukfatG473c80qSa7lpd25Ev1UB-FSB2xp7dRI2asiM7-_0iChM81esW3Xn4JrN-WvPcKnx-D4nYPJAVJwRaToxqKllMImotNHD-vBsZ7nFTGqWjFfge2RdwBACqzb7OtsDrIg-bmNjuLWGqb5msCJ1yRvCykNaWpB6qjtKhz6tv1_m-AyXROiTcDB-Qwo24YIIfVASffWvrRWqjOjrCYb6N8Hi4Q7esY3G4VLxyYrFMFSiJE2o20wzGM5xLvWqLBLNYURxKvDilfUioYqLZ2POcUL0cg3VqjBPjrnJdIGYszlNjb0UuTZnShUybLeN20mpysp7R0u_LWli3qdsOei1e6jXx8gnvcDHXd9P4ntv0J-jjjdPAtdDGG42TVhg9pvzxY64XpoiTzBEQccZdD0fdZGHXDfwmnAFQx85gx7y-36Ael4n8Ds6xR8b7zr9QTDoG2QwCNyu22tCYpu7qR9P-4Zu_gLlhBH9?type=png)](https://mermaid.live/edit#pako:eNq9VcFy2jAQ_RWNeqEzYGwZMPjQDgkhySHTtNAe6nBQbGFrYiSPJJNQzL9XkiGBNAmc6pO1-3b37epJWsOYJwSGcJ7zxzjDQoHp6I4BMIyGRQEmSltmoNX6AozxbL1eYMpucUrM0nyeA3KeUrZbIwcIklKpiNiZfAeQJ6o2G5vCJqtKSQQgTKNkCLwKnEcNm-anfIl769PlbBQwCRhekI_AaAcusJSPXCSfZwZ-XlO4Zkuc0-Q5E-AvwAqcvUcWVWAUNXY9_g--o5qFKfU8W7JP8R-OfgUuoguWzPaaoNt2zSbjWOO2CUYvPdop4FwQnKzMlkkldbN7I4u5ECRW9Y5XYLxeLyl5_FYoypk8MgaDBDFfEJ07Fbws5JFR2ACluT6Q5IQI3whPlYKBnURrwY3fFtxl1DAFzi2hy6PZbQs1e0vF-xiMDsDoY7Bm7jjOkeruYXm3lsb4bYFeRY1pPbhT-2uBbQCoseAEMGWpuSBUeSTzcJmCH1hp-PukfatG473c80qSa7lpd25Ev1UB-FSB2xp7dRI2asiM7-_0iChM81esW3Xn4JrN-WvPcKnx-D4nYPJAVJwRaToxqKllMImotNHD-vBsZ7nFTGqWjFfge2RdwBACqzb7OtsDrIg-bmNjuLWGqb5msCJ1yRvCykNaWpB6qjtKhz6tv1_m-AyXROiTcDB-Qwo24YIIfVASffWvrRWqjOjrCYb6N8Hi4Q7esY3G4VLxyYrFMFSiJE2o20wzGM5xLvWqLBLNYURxKvDilfUioYqLZ2POcUL0cg3VqjBPjrnJdIGYszlNjb0UuTZnShUybLeN20mpysp7R0u_LWli3qdsOei1e6jXx8gnvcDHXd9P4ntv0J-jjjdPAtdDGG42TVhg9pvzxY64XpoiTzBEQccZdD0fdZGHXDfwmnAFQx85gx7y-36Ael4n8Ds6xR8b7zr9QTDoG2QwCNyu22tCYpu7qR9P-4Zu_gLlhBH9)
 
 ### Mermaid Code
 [mermaid flowchart code:](https://mermaid.live/edit)
@@ -127,7 +127,7 @@ flowchart TD
                           1. enter username
                           2. enter password)]
   D --> |User registered| B
-  B --> |user enters: 3| E[End]
+  B ---> |user enters: 3| E[End]
   B --> |invalid character| B
   D --> |username already exists| D
   C --> |correct login| F{{viewOptions
@@ -140,25 +140,22 @@ flowchart TD
                             3. ...
                             10. comedygroup10)]
   F --> |user enters: 2| H[(TrackedComedyGroups
-                          A. Want to Watch
-                          B. In Progress
-                          C. Completed Watching)]
+                          - Tracked Groups 
+                          - Tracking Status
+                          - Avg Rating)]
   F --> |user enters: 3| B
 
   G --> |user selects: listed group #| P
 
   H --> |user selects: listed group #| P[(showComedyGroupDetails
-            - Group Information
-            1. Available Recorded Sketches
-            2. Track Show y/n)]
+            - Group Info
+            - Available Sketches)]
 
-  P --> S[isGroupAlreadyTracked]
-  S --> |yes| R[showGroupSketches
-                - available sketches
-                - rate sketch? ]
+  T --> S[isGroupAlreadyTracked]
+
   S --> |no| Q[Track show y/n?]
-
-  R --> T[(rateSketchMenu
+  S --> |yes| F
+  P --> T[(rateSketchMenu
             1. Rate Sketch
             2. View Average Rating)]
 ```
