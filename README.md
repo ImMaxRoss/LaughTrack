@@ -112,7 +112,7 @@ LaughTrack/
 ### Mermaid Code
 [mermaid flowchart code:](https://mermaid.live/edit)
 
-```plaintext
+```mermaid
 flowchart TD
   A[App Start] --> 
   B{{mainPage
